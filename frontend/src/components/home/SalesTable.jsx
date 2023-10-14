@@ -30,7 +30,7 @@ const SalesTable = ({ sales }) => {
               {sale.productModelNumber}
             </td>
             <td className='border border-slate-700 rounded-md text-center'>
-              ${sale.soldPrice}
+            ₹{sale.soldPrice}
             </td>
             <td className='border border-slate-700 rounded-md text-center'>
               <div className='flex justify-center gap-x-4'>

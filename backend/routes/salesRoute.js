@@ -14,12 +14,12 @@ router.post('/', async (request, response) => {
       !request.body.address ||
       !request.body.district ||
       !request.body.productModelNumber ||
-      !request.body.soldPrice 
-      
+      !request.body.soldPrice ||
+      !request.body.quantity
     ) {
       return response.status(400).send({
         message:
-          'Send all required fields: customerName, phoneNumber, company, address, district, productModelNumber, soldPrice, salesDate',
+          'Send all required fields: customerName, phoneNumber, company, address, district, productModelNumber, soldPrice, quantity, salesDate',
       });
     }
 
@@ -32,7 +32,9 @@ router.post('/', async (request, response) => {
       district: request.body.district,
       productModelNumber: request.body.productModelNumber,
       soldPrice: request.body.soldPrice,
-     
+      quantity: request.body.quantity, // Include the quantity
+      createdAt: new Date(),
+      
     };
 
     const sale = await Sale.create(newSale);
@@ -60,6 +62,7 @@ router.get('/', async (request, response) => {
 });
 
 // Route for Get One Sale by ID
+// Route for Get One Sale by ID
 router.get('/:id', async (request, response) => {
   try {
     const { id } = request.params;
@@ -73,12 +76,11 @@ router.get('/:id', async (request, response) => {
   }
 });
 
+
 // Route for Update a Sale
 router.put('/:id', async (request, response) => {
   try {
     // Check if all required fields are provided
-
-    console.log("The request,",request.body)
     if (
       !request.body.customerName ||
       !request.body.phoneNumber ||
@@ -86,12 +88,12 @@ router.put('/:id', async (request, response) => {
       !request.body.address ||
       !request.body.district ||
       !request.body.productModelNumber ||
-      !request.body.soldPrice 
-      // !request.body.salesDate
+      !request.body.soldPrice ||
+      !request.body.quantity
     ) {
       return response.status(400).send({
         message:
-          'Send all required fields: customerName, phoneNumber, company, address, district, productModelNumber, soldPrice, salesDate',
+          'Send all required fields: customerName, phoneNumber, company, address, district, productModelNumber, soldPrice, quantity, salesDate',
       });
     }
 

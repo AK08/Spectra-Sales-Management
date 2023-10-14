@@ -1,5 +1,5 @@
 import { AiOutlineClose } from 'react-icons/ai';
-import { BsInfoCircle } from 'react-icons/bs'; // Replace with a suitable icon for sales information
+import { BsInfoCircle } from 'react-icons/bs';
 import { BiUserCircle } from 'react-icons/bi';
 
 const SaleModal = ({ sale, onClose }) => {
@@ -17,21 +17,40 @@ const SaleModal = ({ sale, onClose }) => {
           onClick={onClose}
         />
         <h2 className='w-fit px-4 py-1 bg-red-300 rounded-lg'>
-          {new Date(sale.salesDate).toLocaleDateString()}
+          {new Date(sale.createdAt).toLocaleDateString()}
         </h2>
-        <h4 className='my-2 text-gray-500'>{sale._id}</h4>
-        <div className='flex justify-start items-center gap-x-2'>
-          <BsInfoCircle className='text-red-300 text-2xl' />
-          <h2 className='my-1'>{sale.customerName}</h2>
-        </div>
+        
         <div className='flex justify-start items-center gap-x-2'>
           <BiUserCircle className='text-red-300 text-2xl' />
+          <h2 className='my-3'>{sale.customerName}</h2>
+        </div>
+        <div className='flex justify-start items-center gap-x-2'>
+          <BsInfoCircle className='text-red-300 text-2xl' />
           <h2 className='my-1'>{sale.productModelNumber}</h2>
         </div>
-        <p className='mt-4'>Anything you want to show about the sale</p>
-        <p className='my-2'>
-          Sale details go here. You can provide information about the customer, company, address, sold price, etc.
-        </p>
+        
+        <>
+        <div className='my-2'>
+          <span className='text-xl mr-4 text-gray-500'>Phone Number</span>
+          <span>{sale.phoneNumber}</span>
+        </div>
+        <div className='my-2'>
+          <span className='text-xl mr-4 text-gray-500'>Company</span>
+          <span>{sale.company}</span>
+        </div>
+        <div className='my-2'>
+          <span className='text-xl mr-4 text-gray-500'>Address</span>
+          <span>{sale.address}</span>
+        </div>
+        <div className='my-2'>
+          <span className='text-xl mr-4 text-gray-500'>District</span>
+          <span>{sale.district}</span>
+        </div>
+        <div className='my-2'>
+          <span className='text-xl mr-4 text-gray-500'>Sold Price</span>
+          <span>{sale.soldPrice}</span>
+        </div>
+        </>
       </div>
     </div>
   );

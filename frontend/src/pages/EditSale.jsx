@@ -12,6 +12,7 @@ const EditSale = () => {
   const [address, setAddress] = useState('');
   const [district, setDistrict] = useState('');
   const [productModelNumber, setProductModelNumber] = useState('');
+  const [quantity, setQuantity] = useState(0);
   const [soldPrice, setSoldPrice] = useState('');
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
@@ -29,6 +30,7 @@ const EditSale = () => {
         setAddress(response.data.address);
         setDistrict(response.data.district);
         setProductModelNumber(response.data.productModelNumber);
+        setQuantity(response.data.quantity);
         setSoldPrice(response.data.soldPrice);
         setLoading(false);
       })
@@ -48,6 +50,7 @@ const EditSale = () => {
       district,
       productModelNumber,
       soldPrice: parseFloat(soldPrice),
+      quantity,
     };
     setLoading(true);
     console.log("The data",data)
@@ -126,6 +129,15 @@ const EditSale = () => {
             className='border-2 border-gray-500 px-4 py-2 w-full'
           />
         </div>
+        <div className='my-4'>
+            <label className='text-xl mr-4 text-gray-500'>Quantity</label>
+            <input
+              type='number'
+              value={quantity}
+              onChange={(e) => setQuantity(e.target.value)}
+              className='border-2 border-gray-500 px-4 py-2 w-full'
+            />
+          </div>
         <div className='my-4'>
           <label className='text-xl mr-4 text-gray-500'>Sold Price</label>
           <input

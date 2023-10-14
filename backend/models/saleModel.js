@@ -30,6 +30,10 @@ const salesSchema = mongoose.Schema(
       type: Number,
       required: true,
     },
+    quantity: { 
+      type: Number,
+      required: true, 
+    },
     salesDate: {
       type: Date,
       required: false,

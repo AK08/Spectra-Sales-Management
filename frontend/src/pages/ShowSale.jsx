@@ -60,6 +60,10 @@ const ShowSale = () => {
             <span>{sale.productModelNumber}</span>
           </div>
           <div className='my-4'>
+            <span className='text-xl mr-4 text-gray-500'>Quantity</span>
+            <span>{sale.quantity}</span>
+          </div>
+          <div className='my-4'>
             <span className='text-xl mr-4 text-gray-500'>Sold Price</span>
             <span>{sale.soldPrice}</span>
           </div>
