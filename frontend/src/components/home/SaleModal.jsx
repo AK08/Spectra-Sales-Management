@@ -1,8 +1,8 @@
 import { AiOutlineClose } from 'react-icons/ai';
-import { PiBookOpenTextLight } from 'react-icons/pi';
+import { BsInfoCircle } from 'react-icons/bs'; // Replace with a suitable icon for sales information
 import { BiUserCircle } from 'react-icons/bi';
 
-const BookModal = ({ book, onClose }) => {
+const SaleModal = ({ sale, onClose }) => {
   return (
     <div
       className='fixed bg-black bg-opacity-60 top-0 left-0 right-0 bottom-0 z-50 flex justify-center items-center'
@@ -17,29 +17,24 @@ const BookModal = ({ book, onClose }) => {
           onClick={onClose}
         />
         <h2 className='w-fit px-4 py-1 bg-red-300 rounded-lg'>
-          {book.publishYear}
+          {new Date(sale.salesDate).toLocaleDateString()}
         </h2>
-        <h4 className='my-2 text-gray-500'>{book._id}</h4>
+        <h4 className='my-2 text-gray-500'>{sale._id}</h4>
         <div className='flex justify-start items-center gap-x-2'>
-          <PiBookOpenTextLight className='text-red-300 text-2xl' />
-          <h2 className='my-1'>{book.title}</h2>
+          <BsInfoCircle className='text-red-300 text-2xl' />
+          <h2 className='my-1'>{sale.customerName}</h2>
         </div>
         <div className='flex justify-start items-center gap-x-2'>
           <BiUserCircle className='text-red-300 text-2xl' />
-          <h2 className='my-1'>{book.author}</h2>
+          <h2 className='my-1'>{sale.productModelNumber}</h2>
         </div>
-        <p className='mt-4'>Anything You want to show</p>
+        <p className='mt-4'>Anything you want to show about the sale</p>
         <p className='my-2'>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni quia
-          voluptatum sint. Nisi impedit libero eveniet cum vitae qui expedita
-          necessitatibus assumenda laboriosam, facilis iste cumque a pariatur
-          nesciunt cupiditate voluptas? Quis atque earum voluptate dolor nisi
-          dolorum est? Deserunt placeat cumque quo dicta architecto, dolore
-          vitae voluptate sequi repellat!
+          Sale details go here. You can provide information about the customer, company, address, sold price, etc.
         </p>
       </div>
     </div>
   );
 };
 
-export default BookModal;
+export default SaleModal;
